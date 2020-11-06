@@ -1,4 +1,4 @@
-package de.bghw.dokumentensteuerung.dale.config;
+package de.bghw.daleagent.config;
 
 import javax.jms.ConnectionFactory;
 
