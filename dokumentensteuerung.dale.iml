@@ -38,8 +38,10 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.11.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.11.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.2.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.2.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.2.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.2.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.2.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.2.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-undertow:2.3.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.undertow:undertow-core:2.1.4.Final" level="project" />
@@ -74,58 +76,63 @@
     <orderEntry type="library" name="Maven: org.apache.camel:camel-stream:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel.springboot:camel-zipkin-starter:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-zipkin:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-sender-libthrift:2.15.2" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter:2.15.2" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-sender-libthrift:2.15.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.thrift:libthrift:0.13.0" level="project" />
     <orderEntry type="library" name="Maven: javax.annotation:javax.annotation-api:1.3.2" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.zipkin2:zipkin:2.21.7" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-sender-urlconnection:2.15.2" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave:5.12.6" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter-brave:2.15.2" level="project" />
-    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-context-slf4j:5.12.6" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-activemq:2.3.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jms:5.2.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:5.2.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.activemq:activemq-broker:5.15.13" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.activemq:activemq-openwire-legacy:5.15.13" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:19.0" level="project" />
-    <orderEntry type="library" name="Maven: jakarta.jms:jakarta.jms-api:2.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.activemq:activemq-pool:5.15.13" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-sender-urlconnection:2.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-context-slf4j:5.12.3" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.activemq:activemq-jms-pool:5.15.13" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.activemq:activemq-client:5.15.13" level="project" />
-    <orderEntry type="library" name="Maven: org.fusesource.hawtbuf:hawtbuf:1.11" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:1.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-jta_1.1_spec:1.1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.8.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-rabbitmq:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-zipkin:2.2.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-sleuth-zipkin:2.2.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-commons:2.2.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.3.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.zipkin2:zipkin:2.21.1" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter:2.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter-brave:2.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-sender-kafka:2.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-sender-activemq-client:2.15.0" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-sender-amqp-client:2.15.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-sleuth:2.2.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:2.2.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-context:2.2.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-rsa:1.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcpkix-jdk15on:1.64" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.64" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.3.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.6" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-sleuth-core:2.2.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.9.6" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-messaging:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-rpc:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-spring-web:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-http:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-spring-rabbit:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-kafka-clients:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-kafka-streams:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-httpclient:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-httpasyncclient:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-spring-webmvc:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-servlet:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.brave:brave-instrumentation-jms:5.12.3" level="project" />
+    <orderEntry type="library" name="Maven: io.zipkin.reporter2:zipkin-reporter-metrics-micrometer:2.15.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-amqp:2.3.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:5.2.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.amqp:spring-rabbit:2.2.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.rabbitmq:amqp-client:5.9.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.6" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-support:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-api:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-management-api:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-util:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.amqp:spring-amqp:2.2.12.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.retry:spring-retry:1.2.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.2.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel.springboot:camel-rest-starter:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-rest:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-tooling-model:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-util-json:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-jms:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-spring:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-xml-jaxb:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-core:2.3.0" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-impl:2.3.3" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-xml-jaxp:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-bean:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.camel:camel-core-xml:3.6.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.2.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.2.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.2.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-jms_2.0_spec:1.0-alpha-2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-jackson:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-core-engine:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-api:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-base:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-management-api:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-util:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.11.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.11.3" level="project" />
@@ -137,6 +144,7 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.13" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.14" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-servlet:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-support:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-http-common:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-http-base:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-attachments:3.6.0" level="project" />
@@ -176,6 +184,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.camel:camel-test-spring:3.6.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.camel:camel-test:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-core-languages:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-bean:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-browse:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-caffeine-lrucache:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.8.6" level="project" />
@@ -197,5 +206,12 @@
     <orderEntry type="library" name="Maven: org.apache.camel:camel-vm:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-xpath:3.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.camel:camel-xslt:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-spring:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-xml-jaxb:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-core:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-impl:2.3.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-xml-jaxp:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.camel:camel-core-xml:3.6.0" level="project" />
   </component>
 </module>

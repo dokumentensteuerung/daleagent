@@ -1,5 +1,7 @@
 package de.bghw.daleagent.routes;
 
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.zipkin.ZipkinTracer;
 import org.springframework.stereotype.Component;
@@ -29,25 +31,24 @@ public class MiniDAVRouter extends RouteBuilder {
 		configureZipkin();
 	    
 	    // Route 1 :Dokumente einlesen und in Queue ablegen
-//		from("file:input?delay=1000").id("minidav").
-//		process(new Processor() {
-//			@Override
-//			public void process(Exchange exchange) throws Exception {
-//				System.out.println("Dokument angenommen");
-//			}
-//		}).
-//		to("file:output").to("jms:queue:daledokument?requestTimeout=30s");
-//		
-//
-//		// Route 2: Dokumente aus der Queue holen, verarbeiten
-//		from("jms:queue:daledokument").
-//		process(new Processor() {
-//			@Override
-//			public void process(Exchange exchange) throws Exception {
-//				System.out.println("Dokumentverarbeitung gestartet");
-//			}
-//		});
-		
+		from("file:input?delay=1000").id("minidav").
+		process(new Processor() {
+			@Override
+			public void process(Exchange exchange) throws Exception {
+				System.out.println("Dokument angenommen");
+			}
+		}).
+		to("file:output");
+
+
+		// Route 2: Dokumente aus der Queue holen, verarbeiten
+/*		from("jms:queue:daledokument").
+		process(new Processor() {
+			@Override
+			public void process(Exchange exchange) throws Exception {
+				System.out.println("Dokumentverarbeitung gestartet");
+			}
+		});*/
 	}
 
 }

@@ -11,6 +11,7 @@ public class DMSController {
 
 	private static final String template = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
+	//private static Logger log = LoggerFactory.getLogger(DemoController.class);
 
 	@GetMapping("/dms")
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
