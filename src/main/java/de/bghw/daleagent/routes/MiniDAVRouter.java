@@ -6,6 +6,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.zipkin.ZipkinTracer;
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class MiniDAVRouter extends RouteBuilder {
 
