@@ -4,8 +4,11 @@ package de.bghw.daleagent.routes;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.model.dataformat.JsonLibrary;
 import org.apache.camel.zipkin.ZipkinTracer;
 import org.springframework.stereotype.Component;
+
+import de.bghw.daleagent.routes.minidav.XMLtoJSONProcessor;
 
 
 @Component
@@ -36,26 +39,16 @@ public class MiniDAVRouter extends RouteBuilder {
 		getContext().setTracing(true);
 
 		// Exceptionhandling
-		onException(Exception.class).handled(true);
+		//onException(Exception.class).handled(true);
 
 		// Route 1 :Dokumente einlesen und in Queue ablegeN
-		from("file:input?delay=1000&readLock=changed&noop=true").id("minidav").choice().when()
+		from("file:input?delay=1000&readLock=changed&noop=true").id("route1_FileToRabbitMQ").choice().when()
 				.simple("${file:name.ext} == 'xml'").log("Verarbeite Datei: ${file:name}").to("file:output")
-				.to("direct:xml");//.to("jms:queue:daledokument?requestTimeout=30s").to("direct:xml");
-
-		from("direct:xml").routeId("XXX").log("processing xml").
-		process(new Processor() {
-			
-			@Override
-			public void process(Exchange exchange) throws Exception {
-				
-			exchange.getIn().setBody("{ 'name': 'Hallo Welt'}");	
-			}
-		}).marshal().json().log(body().toString()).to("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false");
+		.process(new  XMLtoJSONProcessor()).marshal().json(JsonLibrary.Jackson).to("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false");
 
 //		// Route 2: Dokumente aus der Queue holen, verarbeiten
-//		from("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false").
-//		log("folgender inhalt:"+body().toString());
-	}
+		from("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false").routeId("route2_RABBITMQ_ToXX")
+		.unmarshal().json().log(body().toString());
+		}
 
 }

@@ -15,8 +15,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class MySpringBootApplication {
 
-    private TopicExchange exchange;  
-
+ 
     /**
      * A main method to start this application.
      */
@@ -33,12 +32,12 @@ public class MySpringBootApplication {
 //        return new TopicExchange("dokumentensteuerung", true, false);
 //    }
 
-    @Bean
-    public ApplicationRunner runner(RabbitTemplate template) {
-        return args -> {
-            template.convertAndSend("dale", "Hello, world!");
-        };
-    }
+//    @Bean
+//    public ApplicationRunner runner(RabbitTemplate template) {
+//        return args -> {
+//            template.convertAndSend("dale", "Hello, world!");
+//        };
+//    }
 
     @Bean
     public Queue myQueue() {
