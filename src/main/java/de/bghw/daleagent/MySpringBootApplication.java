@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class MySpringBootApplication {
 
-    private TopicExchange exchange;
+    private TopicExchange exchange;  
 
     /**
      * A main method to start this application.
