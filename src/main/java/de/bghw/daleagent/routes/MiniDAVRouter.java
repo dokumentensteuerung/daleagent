@@ -1,5 +1,6 @@
 package de.bghw.daleagent.routes;
 
+
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
@@ -40,18 +41,21 @@ public class MiniDAVRouter extends RouteBuilder {
 		// Route 1 :Dokumente einlesen und in Queue ablegeN
 		from("file:input?delay=1000&readLock=changed&noop=true").id("minidav").choice().when()
 				.simple("${file:name.ext} == 'xml'").log("Verarbeite Datei: ${file:name}").to("file:output")
-				.to("jms:queue:daledokument?requestTimeout=30s").to("direct:xml");
+				.to("direct:xml");//.to("jms:queue:daledokument?requestTimeout=30s").to("direct:xml");
 
-		from("direct:xml").routeId("XXX").log("processing xml");
-
-		// Route 2: Dokumente aus der Queue holen, verarbeiten
-		from("jms:queue:daledokument").process(new Processor() {
+		from("direct:xml").routeId("XXX").log("processing xml").
+		process(new Processor() {
+			
 			@Override
 			public void process(Exchange exchange) throws Exception {
-				System.out.println("Dokumentverarbeitung gestartet");
+				
+			exchange.getIn().setBody("{ 'name': 'Hallo Welt'}");	
 			}
-		});
+		}).marshal().json().log(body().toString()).to("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false");
 
+//		// Route 2: Dokumente aus der Queue holen, verarbeiten
+//		from("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false").
+//		log("folgender inhalt:"+body().toString());
 	}
 
 }

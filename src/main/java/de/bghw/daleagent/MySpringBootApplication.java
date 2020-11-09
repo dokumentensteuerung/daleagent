@@ -1,18 +1,15 @@
 package de.bghw.daleagent;
-
-import org.springframework.amqp.rabbit.core.RabbitOperations;
+ 
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.core.TopicExchange;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.context.annotation.Bean; 
 
 
 @SpringBootApplication
@@ -27,10 +24,14 @@ public class MySpringBootApplication {
         SpringApplication.run(MySpringBootApplication.class, args);
     }
 
-    @Bean
-    TopicExchange exchange() {
-        return new TopicExchange("dokumentensteuerung", true, false);
-    }
+  @Bean
+  DirectExchange exchange() {
+      return new DirectExchange("dokumentensteuerung", true, false);
+  }
+//    @Bean
+//    TopicExchange exchange() {
+//        return new TopicExchange("dokumentensteuerung", true, false);
+//    }
 
     @Bean
     public ApplicationRunner runner(RabbitTemplate template) {
@@ -45,14 +46,14 @@ public class MySpringBootApplication {
     }
 
     @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
+    Binding binding(Queue queue, DirectExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with("dale");
     }
 
-    @RabbitListener(queues = "dokumentensteuerung")
-    public void listen(String in) {
-        System.out.println("Message read from dokumentensteuerung : " + in);
-    }
+//    @RabbitListener(queues = "dokumentensteuerung")
+//    public void listen(String in) {
+//        System.out.println("Message read from dokumentensteuerung : " + in);
+//    }
 
 
 

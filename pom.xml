@@ -106,7 +106,6 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-rest-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jackson</artifactId>
@@ -120,6 +119,16 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-servlet</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-rabbitmq</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-rabbitmq-starter</artifactId>
         </dependency>
 
         <!-- Test -->
