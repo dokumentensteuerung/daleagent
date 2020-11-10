@@ -81,6 +81,7 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-stream-starter</artifactId>
         </dependency>
+
         <!-- zipkin -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
