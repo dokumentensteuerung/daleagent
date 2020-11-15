@@ -7,6 +7,7 @@
 
     <groupId>de.bghw</groupId>
     <artifactId>dokumentensteuerung.dale</artifactId>
+    <unh_2>RE13</unh_2>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
 

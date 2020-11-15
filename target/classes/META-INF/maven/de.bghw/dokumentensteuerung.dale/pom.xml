@@ -17,7 +17,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring.boot-version>2.3.5.RELEASE</spring.boot-version>
         <spring.boot-cloud-version>Hoxton.SR8</spring.boot-cloud-version>
-    </properties>
+    </properties> 
 
     <dependencyManagement>
         <dependencies>
@@ -81,11 +81,25 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-stream-starter</artifactId>
         </dependency>
-
         <!-- zipkin -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-zipkin-starter</artifactId>
+        </dependency>
+        <!--  Rabbit -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-rabbitmq</artifactId>
+        </dependency>
+        <!--  xpath -->
+        <dependency>
+		  <groupId>org.apache.camel.springboot</groupId>
+		  <artifactId>camel-xpath-starter</artifactId>
+		</dependency>
+
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-rabbitmq-starter</artifactId>
         </dependency>
 
         <dependency>
@@ -107,6 +121,7 @@
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-rest-starter</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jackson</artifactId>
@@ -120,16 +135,6 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-servlet</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-rabbitmq</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-rabbitmq-starter</artifactId>
         </dependency>
 
         <!-- Test -->
