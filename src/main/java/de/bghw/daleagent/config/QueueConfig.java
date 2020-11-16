@@ -9,10 +9,11 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 
 @Configuration
-public class JMSConfig {
+public class QueueConfig {
 
     /*    @Bean
         public JmsTransactionManager jmsTransactionManager(@Qualifier("jmsConnectionFactory") final ConnectionFactory connectionFactory) {
@@ -45,13 +46,20 @@ public class JMSConfig {
 //          return new TopicExchange("dokumentensteuerung", true, false);
 //      }
 
+    
 //      @Bean
 //      public ApplicationRunner runner(RabbitTemplate template) {
 //          return args -> {
 //              template.convertAndSend("dale", "Hello, world!");
 //          };
 //      }
-
+    //Zipkin-Queue automatich anlegen
+    @Bean
+    @Primary
+    public Queue myZipkinQueue() {
+        return new Queue("zipkin", true);
+    }
+    
       @Bean
       public Queue myQueue() {
           return new Queue("dokumentensteuerung", true);
@@ -62,7 +70,7 @@ public class JMSConfig {
           return BindingBuilder.bind(queue).to(exchange).with("dale");
       }
 
-      //Queue abhöhren:
+      //Queue
 //      @RabbitListener(queues = "dokumentensteuerung")
 //      public void listen(String in) {
 //          System.out.println("Message read from dokumentensteuerung : " + in);

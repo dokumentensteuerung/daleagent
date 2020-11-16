@@ -48,13 +48,26 @@ public class MiniDAVRouter extends RouteBuilder {
 		process(new  XMLtoJSONProcessor()).
 		marshal().json(JsonLibrary.Jackson).
 		log("Verschiebe Auftrag(${file:name}\") in die Queue").
-		to("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false&vhost=zipkin");
+		to("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false");
 
 //		// Route 2: Dokumente aus der Queue holen, verarbeiten
-		from("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false&vhost=zipkin").
+		// 
+		from("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false").
 		routeId("route2_RABBITMQ_ToXX").
 		unmarshal().json().
-		log(body().toString());
+		log(body().toString()).
+		log("Pärchen nach DMS").
+		to("direct:moveData2DMS");
+		
+		from("direct:moveData2DMS").
+		log("verarbeitung in dms läuft..");
+		
+		from("direct:moveData2CUSA").
+		log("verarbeitung in cusa läuft..");
+		
+		
+		
+	
 		}
 
 }
