@@ -13,6 +13,18 @@ public class Document {
 	private String refCusaID = "";
 	private String refDmsID = "";
 	
+	public Document() {
+		
+	}
+	
+	public Document(String fileURL, String dokType, String refCusaID, String refDmsID) {
+		this.fileURL = fileURL;
+		this.dokType = dokType;
+		this.refCusaID = refCusaID;
+		this.refDmsID = refDmsID;
+	}
+	
+	
 	public String getFileURL() {
 		return fileURL;
 	}
@@ -38,6 +50,6 @@ public class Document {
 		this.refDmsID = refDmsID;
 	}
 	
-
+	
 	
 }

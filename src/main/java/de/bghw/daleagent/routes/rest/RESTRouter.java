@@ -1,4 +1,4 @@
-package de.bghw.daleagent.routes;
+package de.bghw.daleagent.routes.rest;
 
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
