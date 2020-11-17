@@ -1,5 +1,7 @@
 package de.bghw.daleagent.routes.minidav;
 
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.stereotype.Component;
@@ -32,16 +34,43 @@ public class MiniDAVRouter extends RouteBuilder {
 		// 
 		from("rabbitmq:localhost:5672/dokumentensteuerung?username=guest&password=guest&routingkey=dale&queue=dokumentensteuerung&autoDelete=false&autoAck=false").
 		routeId("route2_RABBITMQ_ToXX").
-		unmarshal().json().
+		//unmarshal().json().
 		log(body().toString()).
 		log("Pärchen nach DMS").
 		to("direct:moveData2DMS");
 		
-		from("direct:moveData2DMS").
-		log("verarbeitung in dms läuft..");
+		//Call DMS
+		from("direct:moveData2DMS")
+		//.marshal().json()
+		.setHeader(Exchange.HTTP_METHOD, simple("POST"))
+		.setHeader(Exchange.CONTENT_TYPE, constant("application/json"))
+		.to("http://localhost:8080/dms/")
+		.process(new Processor() {
+			
+			@Override
+			public void process(Exchange exchange) throws Exception {
+				// TODO Auto-generated method stub
+				String in = exchange.getIn().getBody(String.class);
+				System.out.println("Result von DMS:"+in);
+				exchange.getIn().setBody(in);
+			}
+		})
+		.log("DMS-Verarbeitung erfolgreich").to("direct:moveData2CUSA");
 		
-		from("direct:moveData2CUSA").
-		log("verarbeitung in cusa läuft..");
+		//Call Cusa
+		from("direct:moveData2CUSA")
+		.setHeader(Exchange.HTTP_METHOD, simple("POST"))
+		.setHeader(Exchange.CONTENT_TYPE, constant("application/json"))
+		.to("http://localhost:8080/rul/")
+		.process(new Processor() {
+			
+			@Override
+			public void process(Exchange exchange) throws Exception {
+				// TODO Auto-generated method stub
+				System.out.println("Result von Cusa: "+exchange.getIn().getBody(String.class));	
+			}
+		}).
+		log("Verarbeitung in cusa erfolgreich");
 		
 		}
 
